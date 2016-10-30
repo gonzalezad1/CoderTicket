@@ -5,7 +5,7 @@
 - Submitted by: **Adrien Gonzalez**
 - Time spent: **15** hours
 - URL: **Insert your Heroku URL here**
-- SimpleCov Test Coverage: [coverage/index.html][coverage][index.html]
+- SimpleCov Test Coverage: [coverage/index.html#_AllFiles][coverage][index.html]
 
 ## User Stories
 
