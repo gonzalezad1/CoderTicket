@@ -1,3 +1,33 @@
+<% if params[:categorie].present? %>
+<div class='events-header' style='background-image: url(<%= header_background_image_url %>)'>
+  <div class="container">
+    <h2> Discover My events events </h2>
+    <form>
+      <input type="text" class="form-control" name="search" placeholder="Search for events, shows, courses...">
+    </form>
+  </div>
+</div>
+<div clas="row"%>
+<%= form_tag(events_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<%end%>
+<div class="container-fluid events-list">
+    <% @events.in_groups_of(3) do |g| %>
+   
+      <div class="row">
+        <% g.compact.each do |e| %>
+                <% if e.user_id == @current_user.id %>
+                    <%= render partial: 'card', locals: {event: e} %>
+                  <% end %>
+                  <% end %>
+                </div>  
+    <% end %>
+    
+  </div>
+</div>
+
+<% else %>
 <div class='events-header' style='background-image: url(<%= header_background_image_url %>)'>
   <div class="container">
     <h2> Discover upcoming events </h2>
@@ -6,13 +36,27 @@
     </form>
   </div>
 </div>
+<div clas="row"%>
+<%= form_tag(events_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<%end%>
 <div class="container-fluid events-list">
     <% @events.in_groups_of(3) do |g| %>
+   
       <div class="row">
         <% g.compact.each do |e| %>
-            <%= render partial: 'card', locals: {event: e} %>
-        <% end %>
-      </div>  
+            <% @tickets.each do |t|%>
+                <%if t.event_id == e.id %>
+                    <% if Event.incoming_event(e.starts_at) == false %>
+                    <%= render partial: 'card', locals: {event: e} %>
+                      <% end %>
+                    <%break%>
+                    <% end %>
+                   <% end %>
+                  <% end %>
+                </div>  
     <% end %>
   </div>
 </div>
+<%end%>

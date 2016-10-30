@@ -1,0 +1,23 @@
+<br>
+<br>
+<br>
+<div class="container">
+<div class="row">
+	<div class="centered">
+		<%= form_for :event, url: '/events' do |f| %>
+
+		  Name: <%= f.text_field :name %> <br>
+		  Start date: <%= f.date_select :starts_at %><br>
+		  Enddate: <%= f.date_select :ends_at %><br>
+
+		    <%= f.collection_select :venue_id, @venues, :id, :name %>
+		 <%= f.hidden_field :user_id, value: @current_user.id %>
+		  hero_image_url: <%= f.text_field :hero_image_url %><br>
+		  description: <%= f.text_field :extended_html_description %><br>
+
+		  <%= f.submit "Submit" %>
+
+		<% end %>
+		</div>
+	</div>
+</div>

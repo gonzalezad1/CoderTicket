@@ -17,3 +17,11 @@ body {
   border: 2px solid rgb(241, 112, 91);
 }
 
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+

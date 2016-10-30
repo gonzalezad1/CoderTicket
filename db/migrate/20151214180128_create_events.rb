@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration
       t.text :extended_html_description
       t.references :category, index: true, foreign_key: true
       t.string :name
+      t.integer :user_id
 
       t.timestamps null: false
     end

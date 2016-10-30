@@ -1,0 +1,22 @@
+
+<br>
+<br>
+<br>
+<div class="container">
+<div class="row">
+	<div class="centered">
+		You have to create 1 ticket type if you want your events pusblished.
+		For free event please put 0 vdn...
+		<%= form_for :ticket_type, url: event_ticket_types_path do |f| %>
+
+		  Name: <%= f.text_field :name %> <br>
+		  Price: <%= f.text_field :price %><br>
+		  Max Quantity: <%= f.text_field :max_quantity %><br>
+
+		    <%= f.hidden_field :event_id, value: @event.id %>
+		  <%= f.submit "Publish Event" %>
+
+<% end %>
+</div>
+</div>
+</div>

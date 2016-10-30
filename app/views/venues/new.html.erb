@@ -1,0 +1,20 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<div class="row">
+	<div class="centered">
+		<%= form_for :venue, url: '/venues' do |h| %>
+		    Venue Name: <%= h.text_field :name %>
+		    Venue Adress: <%= h.text_field :full_address %>
+
+		  Region: <%= h.collection_select :region_id, @regions, :id, :name %>
+		  <%= hidden_field_tag :user_id, value: @current_user.id %>
+
+		  <%= h.submit "Submit" %>
+
+		<% end %>
+</div>
+</div>
+</div>
